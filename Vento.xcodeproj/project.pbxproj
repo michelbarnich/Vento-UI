@@ -14,6 +14,9 @@
 		7158247E2445D2A700D0947F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7158247C2445D2A700D0947F /* Main.storyboard */; };
 		7158248A2445D2A700D0947F /* VentoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715824892445D2A700D0947F /* VentoTests.swift */; };
 		715824952445D2A700D0947F /* VentoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715824942445D2A700D0947F /* VentoUITests.swift */; };
+		715824A52445D97400D0947F /* Vento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715824A32445D97400D0947F /* Vento.swift */; };
+		715824A62445D97400D0947F /* AppInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715824A42445D97400D0947F /* AppInformation.swift */; };
+		8667BFAF24532F7000F77106 /* fixPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8667BFAE24532F7000F77106 /* fixPermissions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,9 @@
 		715824902445D2A700D0947F /* VentoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VentoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		715824942445D2A700D0947F /* VentoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VentoUITests.swift; sourceTree = "<group>"; };
 		715824962445D2A700D0947F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		715824A32445D97400D0947F /* Vento.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vento.swift; sourceTree = "<group>"; };
+		715824A42445D97400D0947F /* AppInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInformation.swift; sourceTree = "<group>"; };
+		8667BFAE24532F7000F77106 /* fixPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fixPermissions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,7 @@
 		715824722445D2A500D0947F /* Vento */ = {
 			isa = PBXGroup;
 			children = (
+				715824A22445D97400D0947F /* scripts */,
 				715824732445D2A500D0947F /* AppDelegate.swift */,
 				715824752445D2A500D0947F /* ViewController.swift */,
 				7158247A2445D2A700D0947F /* Assets.xcassets */,
@@ -125,6 +132,16 @@
 				715824962445D2A700D0947F /* Info.plist */,
 			);
 			path = VentoUITests;
+			sourceTree = "<group>";
+		};
+		715824A22445D97400D0947F /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				715824A32445D97400D0947F /* Vento.swift */,
+				715824A42445D97400D0947F /* AppInformation.swift */,
+				8667BFAE24532F7000F77106 /* fixPermissions.swift */,
+			);
+			path = scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +275,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				715824792445D2A500D0947F /* Vento.xcdatamodeld in Sources */,
+				715824A62445D97400D0947F /* AppInformation.swift in Sources */,
 				715824762445D2A500D0947F /* ViewController.swift in Sources */,
+				715824A52445D97400D0947F /* Vento.swift in Sources */,
+				8667BFAF24532F7000F77106 /* fixPermissions.swift in Sources */,
 				715824742445D2A500D0947F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -410,7 +430,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
