@@ -16,6 +16,7 @@
 		715824952445D2A700D0947F /* VentoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715824942445D2A700D0947F /* VentoUITests.swift */; };
 		715824A52445D97400D0947F /* Vento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715824A32445D97400D0947F /* Vento.swift */; };
 		715824A62445D97400D0947F /* AppInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715824A42445D97400D0947F /* AppInformation.swift */; };
+		8663B80E24586D5C0072857E /* checkForUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8663B80D24586D5C0072857E /* checkForUpdate.swift */; };
 		8667BFAF24532F7000F77106 /* fixPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8667BFAE24532F7000F77106 /* fixPermissions.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		715824962445D2A700D0947F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		715824A32445D97400D0947F /* Vento.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vento.swift; sourceTree = "<group>"; };
 		715824A42445D97400D0947F /* AppInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInformation.swift; sourceTree = "<group>"; };
+		8663B80D24586D5C0072857E /* checkForUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkForUpdate.swift; sourceTree = "<group>"; };
 		8667BFAE24532F7000F77106 /* fixPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fixPermissions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +139,7 @@
 		715824A22445D97400D0947F /* scripts */ = {
 			isa = PBXGroup;
 			children = (
+				8663B80D24586D5C0072857E /* checkForUpdate.swift */,
 				715824A32445D97400D0947F /* Vento.swift */,
 				715824A42445D97400D0947F /* AppInformation.swift */,
 				8667BFAE24532F7000F77106 /* fixPermissions.swift */,
@@ -278,6 +281,7 @@
 				715824A62445D97400D0947F /* AppInformation.swift in Sources */,
 				715824762445D2A500D0947F /* ViewController.swift in Sources */,
 				715824A52445D97400D0947F /* Vento.swift in Sources */,
+				8663B80E24586D5C0072857E /* checkForUpdate.swift in Sources */,
 				8667BFAF24532F7000F77106 /* fixPermissions.swift in Sources */,
 				715824742445D2A500D0947F /* AppDelegate.swift in Sources */,
 			);
@@ -446,6 +450,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vento/Vento.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 200411B7P;
 				DEVELOPMENT_TEAM = CGSBH45W3P;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Vento/Info.plist;
@@ -453,6 +458,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.michelbarnich.Vento;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -466,6 +472,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vento/Vento.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 200411B7P;
 				DEVELOPMENT_TEAM = CGSBH45W3P;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Vento/Info.plist;
@@ -473,6 +480,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.michelbarnich.Vento;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

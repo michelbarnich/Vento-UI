@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,7 +56,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="updateWindow" id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -99,16 +99,131 @@
             </objects>
             <point key="canvasLocation" x="767" y="664"/>
         </scene>
+        <!--Window Controller-->
+        <scene sceneID="f9z-Bs-o3o">
+            <objects>
+                <windowController id="FvI-gc-Ty8" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="fyD-iu-KkC">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="516" y="573" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="3008" height="1692"/>
+                        <value key="minSize" type="size" width="480" height="152"/>
+                        <value key="maxSize" type="size" width="480" height="152"/>
+                        <value key="minFullScreenContentSize" type="size" width="480" height="152"/>
+                        <value key="maxFullScreenContentSize" type="size" width="480" height="270"/>
+                        <connections>
+                            <outlet property="delegate" destination="FvI-gc-Ty8" id="wnE-Cc-vRZ"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="s7a-0b-YYS" kind="relationship" relationship="window.shadowedContentViewController" id="ZTN-UL-M6w"/>
+                    </connections>
+                </windowController>
+                <customObject id="9XC-o1-Uxe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-557" y="433"/>
+        </scene>
+        <!--Update View-->
+        <scene sceneID="RxL-5a-msN">
+            <objects>
+                <viewController storyboardIdentifier="updateView" id="s7a-0b-YYS" customClass="updateView" customModule="Vento" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="aJT-eW-uVB">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="152"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cMq-Os-nEt">
+                                <rect key="frame" x="37" y="33" width="40" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Vento" id="oZ5-Le-2td">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ml-Tv-gQm">
+                                <rect key="frame" x="10" y="57" width="90" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Image" id="U1R-S8-OkE"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8dC-9J-eNx">
+                                <rect key="frame" x="108" y="83" width="354" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" title="A new Version of Vento is available at michelbarnich.com. To get the newest Bug-fixes and features, please update." id="WS6-IK-n5f">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M4u-wg-TEu">
+                                <rect key="frame" x="388" y="26" width="75" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gDu-zu-EPU">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="closeButton:" target="s7a-0b-YYS" id="ZxG-XJ-ZaH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="updateView" destination="aJT-eW-uVB" id="afO-4L-Lkm"/>
+                    </connections>
+                </viewController>
+                <customObject id="0kR-1o-1mm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-557" y="858"/>
+        </scene>
+        <!--Restore Defaults-->
+        <scene sceneID="qg9-Ng-jWF">
+            <objects>
+                <viewController id="Rgu-RG-UuE" customClass="restoreDefaults" customModule="Vento" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="DQc-ci-JHV">
+                        <rect key="frame" x="0.0" y="0.0" width="458" height="152"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="dark" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="7M9-3V-Np4">
+                                <rect key="frame" x="0.0" y="0.0" width="458" height="152"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ae4-eP-4If">
+                                        <rect key="frame" x="-2" y="78" width="462" height="20"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="restoring original Icons..." id="jIx-sy-xNk">
+                                            <font key="font" metaFont="system" size="17"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="mv1-iM-tSe">
+                                        <rect key="frame" x="221" y="54" width="16" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </progressIndicator>
+                                </subviews>
+                            </visualEffectView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="spinningWheel" destination="mv1-iM-tSe" id="0Ry-wc-ubs"/>
+                        <outlet property="statusLabel" destination="Ae4-eP-4If" id="wCH-1I-cx0"/>
+                    </connections>
+                </viewController>
+                <customObject id="CPH-Fn-1zE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-379" y="1209"/>
+        </scene>
         <!--View Controller2-->
         <scene sceneID="5b4-FS-OIN">
             <objects>
                 <viewController id="CQF-Pr-Tse" customClass="ViewController2" customModule="Vento" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="B9c-sB-HsH">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="94"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="127"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="381-qB-8N1">
-                                <rect key="frame" x="14" y="46" width="172" height="32"/>
+                                <rect key="frame" x="14" y="79" width="172" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="create Backup" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cxi-JF-h9g">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -119,7 +234,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qjM-j0-GaJ">
-                                <rect key="frame" x="14" y="13" width="172" height="32"/>
+                                <rect key="frame" x="14" y="46" width="172" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="fix permissions" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OhM-EX-ib6">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -130,6 +245,17 @@
                                     <segue destination="Wu0-49-J2k" kind="show" id="US8-aK-8bF"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4cV-ef-KSj">
+                                <rect key="frame" x="14" y="13" width="172" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="restore Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5Mf-o1-jbV">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="Rgu-RG-UuE" kind="show" id="wt4-0d-E4D"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -138,7 +264,7 @@
                 </viewController>
                 <customObject id="GWK-f9-Ji7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1014"/>
+            <point key="canvasLocation" x="75" y="1030.5"/>
         </scene>
         <!--FixViewController-->
         <scene sceneID="UQQ-fw-3YR">
@@ -376,16 +502,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cc2-9d-04l">
-                                <rect key="frame" x="154" y="40" width="173" height="16"/>
+                                <rect key="frame" x="113" y="40" width="255" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Vento © by @michelbarnich" id="nsi-yr-z30">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Vento © by @michelbarnich &amp; @bossgfx_" id="nsi-yr-z30">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <visualEffectView fixedFrame="YES" blendingMode="withinWindow" material="dark" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="xkC-5O-eGX">
-                                <rect key="frame" x="0.0" y="-5" width="480" height="309"/>
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="309"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="iRm-SJ-zuJ">
@@ -425,6 +551,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         <outlet property="mainView" destination="m2S-Jp-Qdl" id="cbQ-RL-H7p"/>
                         <outlet property="spinWheel" destination="iRm-SJ-zuJ" id="cpB-gx-K40"/>
                         <outlet property="statusLabel" destination="vzk-Hq-DE7" id="6T6-rk-Id0"/>
+                        <segue destination="FvI-gc-Ty8" kind="show" id="BJC-jt-LbN"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -44,7 +44,7 @@ func backupCurrentTheme() {
                     print("[INFO:] backing up \(getBundleIdentifierOfApplication(path: appInfo[1]))")
                     
                     //try FileManager.default.copyItem(at: URL(fileURLWithPath: "/Applications/\(appInfo[0])/Contents/Resources/\(iconName)"), to: URL(fileURLWithPath: "/Users/\(NSUserName())/Desktop/vento_backup/\(getBundleIdentifierOfApplication(path: appInfo[1])).png"))
-                    try FileManager.default.createFile(atPath: "/Users/\(NSUserName())/Desktop/vento_backup.bundle/\(getBundleIdentifierOfApplication(path: appInfo[1])).png", contents: icon.tiffRepresentation, attributes: nil)
+                    FileManager.default.createFile(atPath: "/Users/\(NSUserName())/Desktop/vento_backup.bundle/\(getBundleIdentifierOfApplication(path: appInfo[1])).png", contents: icon.tiffRepresentation, attributes: nil)
                     
                 }
             }
@@ -95,9 +95,6 @@ func installTheme(themeFolderPath: String) {
                 try? InfoURL.setResourceValues(resourceValues)
             }
             
-        } catch {
-            print("[ERROR:] \(error)")
-            
         }
     }
     
@@ -110,7 +107,6 @@ func fixPermissions(_ password:String, appPath:String) {
 
     let taskTwo = Process()
     taskTwo.launchPath = "/usr/bin/sudo"
-    //taskTwo.arguments = ["-S", "/usr/bin/xattr", "-d", "-r", "com.test.exemple", " /Desktop/file.extension"]
     taskTwo.arguments = ["-S", "/usr/sbin/chown", NSUserName(), appPath]
 
     let pipeBetween:Pipe = Pipe()
@@ -125,6 +121,6 @@ func fixPermissions(_ password:String, appPath:String) {
     taskTwo.launch()
 
     let data = pipeToMe.fileHandleForReading.readDataToEndOfFile()
-    let output : String = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as! String
+    let output : String = NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
     print(output)
 }

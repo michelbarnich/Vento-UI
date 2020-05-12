@@ -25,6 +25,7 @@ class ViewController: NSViewController {
         for view in iconContainerView.subviews {
             view.removeFromSuperview()
         }
+        
         iconContainerView.setFrameOrigin(NSPoint(x: 0, y: 142))
         iconContainerView.frame.size.width = 0
         fillContainerView()
@@ -51,6 +52,16 @@ class ViewController: NSViewController {
         blurView.isHidden = true
         /*mainView.blendingMode = .behindWindow
         mainView.material = .dark*/
+        
+        if (setURLAndCheckForUpdate() != "false") {
+            var myWindow: NSWindow? = nil
+            let storyboard = NSStoryboard(name: "Main",bundle: nil)
+            let controller: NSViewController = storyboard.instantiateController(withIdentifier: "updateView") as! NSViewController
+            myWindow = NSWindow(contentViewController: controller)
+            myWindow?.makeKeyAndOrderFront(self)
+            let vc = NSWindowController(window: myWindow)
+            vc.showWindow(self)
+        }
     }
 
     override var representedObject: Any? {
@@ -62,15 +73,21 @@ class ViewController: NSViewController {
         let installedAppsArray = getInstalledAppsInfoArray();
         
         //trashy implementation of icon slideshow
+        let defaultIcon = "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/GenericApplicationIcon.icns"
         for i in 0 ... (installedAppsArray.count - 1) {
             print(installedAppsArray[i])
-            var imageNameForView = Bundle(path: installedAppsArray[i][1])?.infoDictionary!["CFBundleIconFile"] as! String
+            var imageNameForView:String = Bundle(path: installedAppsArray[i][1])?.infoDictionary?["CFBundleIconFile"] as? String ?? defaultIcon
             
             if !imageNameForView.hasSuffix(".icns") {
                 imageNameForView += ".icns"
             }
             
-            let imageForView = NSImage(contentsOf: URL(fileURLWithPath: installedAppsArray[i][1] + "/Contents/resources/" + imageNameForView))
+            var imageForView = NSImage(contentsOf: URL(fileURLWithPath: installedAppsArray[i][1] + "/Contents/resources/" + imageNameForView))
+            
+            if(imageNameForView == defaultIcon) {
+                imageForView = NSImage(contentsOf: URL(fileURLWithPath: defaultIcon))
+            }
+            
             let newImageView = NSImageView(frame: CGRect(x: (94 * i), y: 0, width: 94, height: 94))
             newImageView.image = imageForView
             iconContainerView.addSubview(newImageView);
@@ -137,9 +154,6 @@ class ViewController: NSViewController {
                                 try? InfoURL.setResourceValues(resourceValues)
                             }
                             
-                        } catch {
-                            print("[ERROR:] \(error)")
-                            
                         }
                     }
                     DispatchQueue.main.async {
@@ -179,6 +193,20 @@ class ViewController2: NSViewController {
     @IBAction func fixPerm(_ sender: Any) {
         
     }
+}
+
+class updateView: NSViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    
+    @IBAction func closeButton(_ sender: Any) {
+        self.view.window?.close()
+    }
+    
 }
 
 class FixViewController: NSViewController {
@@ -229,6 +257,34 @@ class FixViewController: NSViewController {
     
     @IBAction func passwordInput(_ sender: Any) {
         self.checkPasswordAndFix(password: passwordInput.stringValue)
+    }
+}
+
+class restoreDefaults: NSViewController {
+    
+    @IBOutlet weak var spinningWheel: NSProgressIndicator!
+    @IBOutlet weak var statusLabel: NSTextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        spinningWheel.startAnimation(self)
+        
+        let installedAppArray = getInstalledAppsInfoArray()
+        DispatchQueue.global(qos: .background).async {
+            for i in 0...(installedAppArray.count - 1) {
+                var iconName = getApplicationIconName(path: installedAppArray[i][1])
+                if !iconName.hasSuffix(".icns") {
+                    iconName += ".icns"
+                }
+                
+                print("[INFO:] restoring \(installedAppArray[i][1])")
+          
+                NSWorkspace.shared.setIcon(NSImage(byReferencing: URL(fileURLWithPath: installedAppArray[i][1] + "/Contents/Resources/\(iconName)")), forFile: installedAppArray[i][1], options: NSWorkspace.IconCreationOptions(rawValue: 0))
+            }
+            DispatchQueue.main.async {
+                self.view.window?.windowController?.close()
+            }
+        }
     }
 }
 
