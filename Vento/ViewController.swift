@@ -34,15 +34,23 @@ class ViewController: NSViewController {
     func rotateLeft() {
         NSAnimationContext.runAnimationGroup({_ in
             NSAnimationContext.current.duration = TimeInterval(self.iconContainerView.frame.size.width * 0.02)
+            NSAnimationContext.current.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
             self.iconContainerView.animator().setFrameOrigin(NSPoint(x: self.iconContainerView.frame.size.width * -1 + 480, y: 142)
-            )},completionHandler:{self.rotateRight()})
+            )},completionHandler:{
+                self.rotateRight()
+                
+        })
     }
     
     func rotateRight() {
         NSAnimationContext.runAnimationGroup({_ in
-        NSAnimationContext.current.duration = TimeInterval(self.iconContainerView.frame.size.width * 0.02)
-        self.iconContainerView.animator().setFrameOrigin(NSPoint(x: 0, y: 142)
-            )},completionHandler:{ self.rotateLeft()})
+            NSAnimationContext.current.duration = TimeInterval(self.iconContainerView.frame.size.width * 0.02)
+            NSAnimationContext.current.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+            self.iconContainerView.animator().setFrameOrigin(NSPoint(x: 0, y: 142)
+        )},completionHandler:{
+            self.rotateLeft()
+            
+        })
     }
     
     override func viewDidLoad() {
@@ -144,10 +152,10 @@ class ViewController: NSViewController {
                                 
                                 
                                 
-                                NSWorkspace.shared.setIcon(NSImage(byReferencing: URL(fileURLWithPath: expectedIconPath)), forFile: "/Applications/\(app[0])", options: NSWorkspace.IconCreationOptions(rawValue: 0))
+                                NSWorkspace.shared.setIcon(NSImage(byReferencing: URL(fileURLWithPath: expectedIconPath)), forFile: app[1], options: NSWorkspace.IconCreationOptions(rawValue: 0))
                                 
-                                var AppURL = URL(fileURLWithPath: "/Applications/\(app[0])")
-                                var InfoURL = URL(fileURLWithPath: "/Applications/\(app[0])/Info.plist")
+                                var AppURL = URL(fileURLWithPath: app[1])
+                                var InfoURL = URL(fileURLWithPath: "\(app[1])/Info.plist")
                                 var resourceValues = URLResourceValues()
                                 resourceValues.contentModificationDate = Date()
                                 try? AppURL.setResourceValues(resourceValues)

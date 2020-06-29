@@ -12,7 +12,27 @@ import AppKit
 func getInstalledAppsInfoArray() -> Array<Array<String>> {
     var installedAppsArray = [[String]]()
     
-    do {
+    let ls = Process()
+    ls.launchPath = "/usr/bin/mdfind"
+    ls.arguments = ["kMDItemContentType == 'com.apple.application-bundle'"]
+
+    let pipe = Pipe()
+
+    ls.standardOutput = pipe
+    ls.launch()
+    let data = pipe.fileHandleForReading.readDataToEndOfFile()
+    if let output = String(data: data, encoding: String.Encoding.utf8) {
+        
+        let appPaths = output.split(separator: "\n");
+        
+        for i in 0...appPaths.count - 1 {
+            installedAppsArray.append([(appPaths[i] as NSString).lastPathComponent, String(appPaths[i])])
+        }
+    }
+    
+    return installedAppsArray
+    
+    /*do {
         let installedApps = try FileManager.default.contentsOfDirectory(atPath: "/Applications")
         
         for app in installedApps {
@@ -25,7 +45,7 @@ func getInstalledAppsInfoArray() -> Array<Array<String>> {
         return installedAppsArray
     } catch {
         return installedAppsArray
-    }
+    }*/
 }
 
 func backupCurrentTheme() {
@@ -36,7 +56,7 @@ func backupCurrentTheme() {
             try FileManager.default.createDirectory(atPath: "/Users/\(NSUserName())/Desktop/vento_backup.bundle", withIntermediateDirectories: false, attributes: nil)
             
             for appInfo in getInstalledAppsInfoArray() {
-                let icon = NSWorkspace.shared.icon(forFile: "/Applications/" + appInfo[0])
+                let icon = NSWorkspace.shared.icon(forFile: appInfo[1])
             
                 
                 if(!FileManager.default.fileExists(atPath: "/Users/\(NSUserName())/Desktop/vento_backup.bundle/\(getBundleIdentifierOfApplication(path: appInfo[1])).png")) {
@@ -57,7 +77,7 @@ func backupCurrentTheme() {
     
 }
 
-func installTheme(themeFolderPath: String) {
+func installTheme(themeFolderPath: String, installedAppsArray: Array<Array<String>>) {
     //backupCurrentTheme()
     
     print("[INFO:] installing Theme")
@@ -67,7 +87,7 @@ func installTheme(themeFolderPath: String) {
         themeFolderPathCorrected += "/"
     }
     
-    let appInfoArray = getInstalledAppsInfoArray()
+    let appInfoArray = installedAppsArray;
     
     for app in appInfoArray {
         
@@ -85,10 +105,10 @@ func installTheme(themeFolderPath: String) {
                 print("[INFO:] copying Icon for \(app[0])")
                 //ViewController().updateStatus(status: "copying Icon for \(app[0])")
                 
-                NSWorkspace.shared.setIcon(NSImage(byReferencing: URL(fileURLWithPath: expectedIconPath)), forFile: "/Applications/\(app[0])", options: NSWorkspace.IconCreationOptions(rawValue: 0))
+                NSWorkspace.shared.setIcon(NSImage(byReferencing: URL(fileURLWithPath: expectedIconPath)), forFile: app[1], options: NSWorkspace.IconCreationOptions(rawValue: 0))
                 
-                var AppURL = URL(fileURLWithPath: "/Applications/\(app[0])")
-                var InfoURL = URL(fileURLWithPath: "/Applications/\(app[0])/Info.plist")
+                var AppURL = URL(fileURLWithPath: app[1])
+                var InfoURL = URL(fileURLWithPath: "\(app[1])/Info.plist")
                 var resourceValues = URLResourceValues()
                 resourceValues.contentModificationDate = Date()
                 try? AppURL.setResourceValues(resourceValues)

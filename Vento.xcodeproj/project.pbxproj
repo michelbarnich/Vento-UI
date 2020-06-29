@@ -215,6 +215,7 @@
 				TargetAttributes = {
 					7158246F2445D2A500D0947F = {
 						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1140;
 					};
 					715824842445D2A700D0947F = {
 						CreatedOnToolsVersion = 11.4;
@@ -447,10 +448,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Vento/Vento.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 200411B7P;
+				CURRENT_PROJECT_VERSION = 200624B1I;
 				DEVELOPMENT_TEAM = CGSBH45W3P;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Vento/Info.plist;
@@ -458,9 +460,10 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.michelbarnich.Vento;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -469,10 +472,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Vento/Vento.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 200411B7P;
+				CURRENT_PROJECT_VERSION = 200624B1I;
 				DEVELOPMENT_TEAM = CGSBH45W3P;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Vento/Info.plist;
@@ -480,7 +484,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.michelbarnich.Vento;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

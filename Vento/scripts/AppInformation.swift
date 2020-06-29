@@ -11,7 +11,7 @@ import AppKit
 
 func getBundleIdentifierOfApplication(path: String) -> String {
     
-    return (Bundle(path: path)?.bundleIdentifier)!
+    return (Bundle(path: path)?.bundleIdentifier) ?? "";
     
 }
 
