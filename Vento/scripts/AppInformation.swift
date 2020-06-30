@@ -16,5 +16,5 @@ func getBundleIdentifierOfApplication(path: String) -> String {
 }
 
 func getApplicationIconName(path: String) -> String {    
-    return Bundle(path: path)?.infoDictionary!["CFBundleIconFile"] as! String
+    return Bundle(path: path)?.infoDictionary!["CFBundleIconFile"] as? String ?? "";
 }
