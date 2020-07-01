@@ -55,6 +55,8 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
         fillContainerView()
         rotateLeft()
         blurView.isHidden = true
@@ -139,27 +141,24 @@ class ViewController: NSViewController {
                     for app in appInfoArray {
                         
                         do {
-                            
-                            let expectedIconPath = themeFolderPathCorrected + "/" + getBundleIdentifierOfApplication(path: app[1]) + ".png"
-                            print(expectedIconPath)
-                            
-                            if FileManager.default.fileExists(atPath: expectedIconPath) {
+                            DispatchQueue.main.async {
+                                let expectedIconPath = themeFolderPathCorrected + "/" + getBundleIdentifierOfApplication(path: app[1]) + ".png"
+                                print(expectedIconPath)
                                 
-                                print("[INFO:] copying Icon for \(app[0])")
-                                DispatchQueue.main.async {
+                                if FileManager.default.fileExists(atPath: expectedIconPath) {
+                                    
+                                    print("[INFO:] copying Icon for \(app[0])")
                                     self.statusLabel.stringValue = "copying Icon for \(app[0])"
+
+                                    NSWorkspace.shared.setIcon(NSImage(byReferencing: URL(fileURLWithPath: expectedIconPath)), forFile: app[1], options: NSWorkspace.IconCreationOptions(rawValue: 0))
+                                    
+                                    var AppURL = URL(fileURLWithPath: app[1])
+                                    var InfoURL = URL(fileURLWithPath: "\(app[1])/Info.plist")
+                                    var resourceValues = URLResourceValues()
+                                    resourceValues.contentModificationDate = Date()
+                                    try? AppURL.setResourceValues(resourceValues)
+                                    try? InfoURL.setResourceValues(resourceValues)
                                 }
-                                
-                                
-                                
-                                NSWorkspace.shared.setIcon(NSImage(byReferencing: URL(fileURLWithPath: expectedIconPath)), forFile: app[1], options: NSWorkspace.IconCreationOptions(rawValue: 0))
-                                
-                                var AppURL = URL(fileURLWithPath: app[1])
-                                var InfoURL = URL(fileURLWithPath: "\(app[1])/Info.plist")
-                                var resourceValues = URLResourceValues()
-                                resourceValues.contentModificationDate = Date()
-                                try? AppURL.setResourceValues(resourceValues)
-                                try? InfoURL.setResourceValues(resourceValues)
                             }
                             
                         }
@@ -168,10 +167,10 @@ class ViewController: NSViewController {
                         self.statusLabel.stringValue = "cleaning up..."
                         do {
                             try FileManager.default.removeItem(at: URL(fileURLWithPath: "/Users/\(NSUserName())/Desktop/temp_theme/"))
+                            self.statusLabel.stringValue = "Done! Enjoy your theme!"
                         } catch {
                             self.statusLabel.stringValue = "could not delete temp_theme"
                         }
-                        self.statusLabel.stringValue = "Done! Enjoy your theme!"
                         self.spinWheel.isHidden = true
                         self.closeButton.isHidden = false
                     

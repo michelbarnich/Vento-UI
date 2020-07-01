@@ -212,18 +212,18 @@
                 </viewController>
                 <customObject id="CPH-Fn-1zE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-379" y="1209"/>
+            <point key="canvasLocation" x="-456" y="1357"/>
         </scene>
         <!--View Controller2-->
         <scene sceneID="5b4-FS-OIN">
             <objects>
                 <viewController id="CQF-Pr-Tse" customClass="ViewController2" customModule="Vento" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="B9c-sB-HsH">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="127"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="153"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="381-qB-8N1">
-                                <rect key="frame" x="14" y="79" width="172" height="32"/>
+                                <rect key="frame" x="14" y="105" width="172" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="create Backup" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cxi-JF-h9g">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -234,7 +234,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qjM-j0-GaJ">
-                                <rect key="frame" x="14" y="46" width="172" height="32"/>
+                                <rect key="frame" x="14" y="72" width="172" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="fix permissions" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OhM-EX-ib6">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -246,7 +246,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4cV-ef-KSj">
-                                <rect key="frame" x="14" y="13" width="172" height="32"/>
+                                <rect key="frame" x="14" y="39" width="172" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="restore Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5Mf-o1-jbV">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -256,6 +256,14 @@
                                     <segue destination="Rgu-RG-UuE" kind="show" id="wt4-0d-E4D"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dPK-7m-f3B">
+                                <rect key="frame" x="18" y="18" width="92" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Reset Dock" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6kg-zp-CXt">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -264,7 +272,7 @@
                 </viewController>
                 <customObject id="GWK-f9-Ji7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1030.5"/>
+            <point key="canvasLocation" x="75" y="1044.5"/>
         </scene>
         <!--FixViewController-->
         <scene sceneID="UQQ-fw-3YR">

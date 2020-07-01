@@ -56,18 +56,20 @@ func backupCurrentTheme() {
             try FileManager.default.createDirectory(atPath: "/Users/\(NSUserName())/Desktop/vento_backup.bundle", withIntermediateDirectories: false, attributes: nil)
             
             for appInfo in getInstalledAppsInfoArray() {
-                let icon = NSWorkspace.shared.icon(forFile: appInfo[1])
-            
-                
-                if(!FileManager.default.fileExists(atPath: "/Users/\(NSUserName())/Desktop/vento_backup.bundle/\(getBundleIdentifierOfApplication(path: appInfo[1])).png")) {
+                DispatchQueue.main.async {
+                    let icon = NSWorkspace.shared.icon(forFile: appInfo[1])
                     
-                    print("[INFO:] backing up \(getBundleIdentifierOfApplication(path: appInfo[1]))")
-                    
-                    //try FileManager.default.copyItem(at: URL(fileURLWithPath: "/Applications/\(appInfo[0])/Contents/Resources/\(iconName)"), to: URL(fileURLWithPath: "/Users/\(NSUserName())/Desktop/vento_backup/\(getBundleIdentifierOfApplication(path: appInfo[1])).png"))
-                    FileManager.default.createFile(atPath: "/Users/\(NSUserName())/Desktop/vento_backup.bundle/\(getBundleIdentifierOfApplication(path: appInfo[1])).png", contents: icon.tiffRepresentation, attributes: nil)
-                    
+                        
+                        if(!FileManager.default.fileExists(atPath: "/Users/\(NSUserName())/Desktop/vento_backup.bundle/\(getBundleIdentifierOfApplication(path: appInfo[1])).png")) {
+                            
+                            print("[INFO:] backing up \(getBundleIdentifierOfApplication(path: appInfo[1]))")
+                            
+                            //try FileManager.default.copyItem(at: URL(fileURLWithPath: "/Applications/\(appInfo[0])/Contents/Resources/\(iconName)"), to: URL(fileURLWithPath: "/Users/\(NSUserName())/Desktop/vento_backup/\(getBundleIdentifierOfApplication(path: appInfo[1])).png"))
+                            FileManager.default.createFile(atPath: "/Users/\(NSUserName())/Desktop/vento_backup.bundle/\(getBundleIdentifierOfApplication(path: appInfo[1])).png", contents: icon.tiffRepresentation, attributes: nil)
+                            
+                        }
+                    }
                 }
-            }
             
         } catch {
             print("[ERROR:] \(error)")
