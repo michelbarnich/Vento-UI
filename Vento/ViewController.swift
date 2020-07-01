@@ -55,7 +55,12 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if !launchedBefore {
+            UserDefaults.standard.set(true, forKey: "launchedBefore");
+            UserDefaults.standard.set(true, forKey: "resetDock");
+        }
         
         fillContainerView()
         rotateLeft()
