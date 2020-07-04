@@ -59,7 +59,7 @@ class ViewController: NSViewController {
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if !launchedBefore {
             UserDefaults.standard.set(true, forKey: "launchedBefore");
-            UserDefaults.standard.set(true, forKey: "resetDock");
+            UserDefaults.standard.set(true, forKey: "mountRootFS");
         }
         
         fillContainerView()
@@ -110,6 +110,11 @@ class ViewController: NSViewController {
             
         }
     }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        let viewController = segue.destinationController as! FixViewController
+        viewController.action = "remount";
+    }
 
 
     @IBAction func choseTheme(_ sender: Any) {
@@ -125,6 +130,10 @@ class ViewController: NSViewController {
 
         if (dialog.runModal() == NSApplication.ModalResponse.OK) {
             let result = dialog.url // Pathname of the file
+            
+            if(UserDefaults.standard.bool(forKey: "remountRootFS")) {
+                self.performSegue(withIdentifier: "remount", sender: self)
+            }
              
              if (result != nil) {
                 blurView.isHidden = false;
@@ -133,7 +142,7 @@ class ViewController: NSViewController {
                 spinWheel.startAnimation(self)
                 let path = result!.path
                 //SSZipArchive.unzipFile(atPath: path, toDestination: "/Users/\(NSUserName())/Desktop/temp_theme")
-                statusLabel.stringValue = "gathering information..."
+                statusLabel.stringValue = "Installing Theme..."
                 DispatchQueue.global(qos: .background).async {
                     //backupCurrentTheme()
                     
@@ -223,6 +232,8 @@ class updateView: NSViewController {
 
 class FixViewController: NSViewController {
     
+    @IBOutlet weak var fixButton: NSButton!
+    @IBOutlet weak var fixText: NSTextField!
     @IBOutlet weak var passwordInput: NSSecureTextField!
     @IBOutlet weak var veView: NSVisualEffectView!
     @IBOutlet weak var fixStatusLabel: NSTextField!
@@ -230,6 +241,8 @@ class FixViewController: NSViewController {
     @IBAction func cancelFix(_ sender: Any) {
         self.view.window?.windowController?.close()
     }
+    
+    var action = "fix";
     
     func checkPasswordAndFix(password:String) {
         if(authenticateLocalUser(username: NSUserName(), password: password)) {
@@ -261,6 +274,11 @@ class FixViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         veView.isHidden = true;
+        
+        if(action != "fix") {
+            fixText.stringValue = "To remount the rootFS, Vento needs your password. It will not be saved, or send anywhere!"
+            fixButton.stringValue = "remount"
+        }
     }
     
     @IBAction func applyFix(_ sender: Any) {

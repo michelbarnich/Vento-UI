@@ -257,9 +257,9 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dPK-7m-f3B">
-                                <rect key="frame" x="18" y="18" width="92" height="18"/>
+                                <rect key="frame" x="18" y="18" width="117" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Reset Dock" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6kg-zp-CXt">
+                                <buttonCell key="cell" type="check" title="remount rootFS" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6kg-zp-CXt">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -355,7 +355,9 @@ Gw
                     </view>
                     <connections>
                         <outlet property="cacelFix" destination="1fC-lW-plb" id="nWa-dX-ofY"/>
+                        <outlet property="fixButton" destination="KKE-YR-ddq" id="dsh-78-1Yw"/>
                         <outlet property="fixStatusLabel" destination="yxI-Ml-GHn" id="OFY-Ol-gtZ"/>
+                        <outlet property="fixText" destination="mFt-tO-9Gc" id="WvN-Bu-pxx"/>
                         <outlet property="passwordInput" destination="sNc-7d-bag" id="Hk4-qn-jwI"/>
                         <outlet property="veView" destination="DDu-IR-ZFV" id="zMj-sL-mmB"/>
                     </connections>
@@ -560,6 +562,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         <outlet property="spinWheel" destination="iRm-SJ-zuJ" id="cpB-gx-K40"/>
                         <outlet property="statusLabel" destination="vzk-Hq-DE7" id="6T6-rk-Id0"/>
                         <segue destination="FvI-gc-Ty8" kind="show" id="BJC-jt-LbN"/>
+                        <segue destination="Wu0-49-J2k" kind="modal" identifier="remount" id="g9j-9y-ocr"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -567,6 +570,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             <point key="canvasLocation" x="75" y="669.5"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="g9j-9y-ocr"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Image" width="256" height="256"/>
         <image name="NSActionTemplate" width="14" height="14"/>

@@ -82,6 +82,10 @@ func backupCurrentTheme() {
 func installTheme(themeFolderPath: String, installedAppsArray: Array<Array<String>>) {
     //backupCurrentTheme()
     
+    if(UserDefaults.standard.bool(forKey: "mountRootFS")) {
+        
+    }
+    
     print("[INFO:] installing Theme")
     
     var themeFolderPathCorrected = themeFolderPath
