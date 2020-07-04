@@ -354,7 +354,6 @@ Gw
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="cacelFix" destination="1fC-lW-plb" id="nWa-dX-ofY"/>
                         <outlet property="fixButton" destination="KKE-YR-ddq" id="dsh-78-1Yw"/>
                         <outlet property="fixStatusLabel" destination="yxI-Ml-GHn" id="OFY-Ol-gtZ"/>
                         <outlet property="fixText" destination="mFt-tO-9Gc" id="WvN-Bu-pxx"/>
@@ -562,7 +561,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         <outlet property="spinWheel" destination="iRm-SJ-zuJ" id="cpB-gx-K40"/>
                         <outlet property="statusLabel" destination="vzk-Hq-DE7" id="6T6-rk-Id0"/>
                         <segue destination="FvI-gc-Ty8" kind="show" id="BJC-jt-LbN"/>
-                        <segue destination="Wu0-49-J2k" kind="modal" identifier="remount" id="g9j-9y-ocr"/>
+                        <segue destination="6GD-Ib-tFh" kind="modal" identifier="remount" id="UGn-tP-eoj"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -571,7 +570,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="g9j-9y-ocr"/>
+        <segue reference="UGn-tP-eoj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Image" width="256" height="256"/>

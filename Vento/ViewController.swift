@@ -58,8 +58,8 @@ class ViewController: NSViewController {
         
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if !launchedBefore {
-            UserDefaults.standard.set(true, forKey: "launchedBefore");
-            UserDefaults.standard.set(true, forKey: "mountRootFS");
+            UserDefaults.standard.setValue(true, forKey: "launchedBefore");
+            UserDefaults.standard.setValue(true, forKey: "remountRootFS");
         }
         
         fillContainerView()
@@ -112,8 +112,10 @@ class ViewController: NSViewController {
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        let viewController = segue.destinationController as! FixViewController
-        viewController.action = "remount";
+        if(segue.identifier == "remount") {
+            let viewController = segue.destinationController as! FixViewController
+            viewController.action = "remount";
+        }
     }
 
 
@@ -132,8 +134,12 @@ class ViewController: NSViewController {
             let result = dialog.url // Pathname of the file
             
             if(UserDefaults.standard.bool(forKey: "remountRootFS")) {
-                self.performSegue(withIdentifier: "remount", sender: self)
+                print("test")
+                    self.performSegue(withIdentifier: "remount", sender: self)
+                //only continue after FixViewController returned
             }
+            
+            print(Thread.isMainThread)
              
              if (result != nil) {
                 blurView.isHidden = false;
@@ -162,7 +168,7 @@ class ViewController: NSViewController {
                                 if FileManager.default.fileExists(atPath: expectedIconPath) {
                                     
                                     print("[INFO:] copying Icon for \(app[0])")
-                                    self.statusLabel.stringValue = "copying Icon for \(app[0])"
+                                    //self.statusLabel.stringValue = "copying Icon for \(app[0])"
 
                                     NSWorkspace.shared.setIcon(NSImage(byReferencing: URL(fileURLWithPath: expectedIconPath)), forFile: app[1], options: NSWorkspace.IconCreationOptions(rawValue: 0))
                                     
@@ -178,13 +184,7 @@ class ViewController: NSViewController {
                         }
                     }
                     DispatchQueue.main.async {
-                        self.statusLabel.stringValue = "cleaning up..."
-                        do {
-                            try FileManager.default.removeItem(at: URL(fileURLWithPath: "/Users/\(NSUserName())/Desktop/temp_theme/"))
-                            self.statusLabel.stringValue = "Done! Enjoy your theme!"
-                        } catch {
-                            self.statusLabel.stringValue = "could not delete temp_theme"
-                        }
+                        self.statusLabel.stringValue = "Done! Enjoy your theme!"
                         self.spinWheel.isHidden = true
                         self.closeButton.isHidden = false
                     
@@ -246,25 +246,29 @@ class FixViewController: NSViewController {
     
     func checkPasswordAndFix(password:String) {
         if(authenticateLocalUser(username: NSUserName(), password: password)) {
-            DispatchQueue.global(qos: .background).async {
-                let installedApps = getInstalledAppsInfoArray()
-                
-                DispatchQueue.main.async {
-                    self.veView.isHidden = false;
-                    self.passwordInput.isHidden = true
-                }
-                
-                for i in 0 ... (installedApps.count - 1) {
-                    fixPermissions(password, appPath: installedApps[i][1])
+            if(action == "fix") {
+                DispatchQueue.global(qos: .background).async {
+                    let installedApps = getInstalledAppsInfoArray()
                     
                     DispatchQueue.main.async {
-                        self.fixStatusLabel.stringValue = "fixing " + installedApps[1][0]
+                        self.veView.isHidden = false;
+                        self.passwordInput.isHidden = true
                     }
                     
+                    for i in 0 ... (installedApps.count - 1) {
+                        fixPermissions(password, appPath: installedApps[i][1])
+                        
+                        DispatchQueue.main.async {
+                            self.fixStatusLabel.stringValue = "fixing " + installedApps[1][0]
+                        }
+                        
+                    }
+                    DispatchQueue.main.async {
+                        self.view.window?.windowController?.close()
+                    }
                 }
-                DispatchQueue.main.async {
-                    self.view.window?.windowController?.close()
-                }
+            } else {
+                remountRootFS(password: password);
             }
         } else {
             self.view.window?.shakeWindow()
