@@ -117,9 +117,20 @@ class ViewController: NSViewController {
             viewController.action = "remount";
         }
     }
+    
+    func showFixViewForRemount() {
+        print("TEST")
+        if(UserDefaults.standard.bool(forKey: "remountRootFS")) {
+            print("test")
+                self.performSegue(withIdentifier: "remount", sender: self)
+            //only continue after FixViewController
+            
+        }
+    }
 
 
     @IBAction func choseTheme(_ sender: Any) {
+        showFixViewForRemount()
         let dialog = NSOpenPanel();
          
          dialog.title                   = "Choose a theme";
@@ -132,14 +143,6 @@ class ViewController: NSViewController {
 
         if (dialog.runModal() == NSApplication.ModalResponse.OK) {
             let result = dialog.url // Pathname of the file
-            
-            if(UserDefaults.standard.bool(forKey: "remountRootFS")) {
-                print("test")
-                    self.performSegue(withIdentifier: "remount", sender: self)
-                //only continue after FixViewController returned
-            }
-            
-            print(Thread.isMainThread)
              
              if (result != nil) {
                 blurView.isHidden = false;
@@ -195,13 +198,13 @@ class ViewController: NSViewController {
              // User clicked on "Cancel"
              return
          }
-         
     }
     
 }
 
 class ViewController2: NSViewController {
     
+    @IBOutlet weak var remountState: NSButton!
     @IBOutlet weak var backupbttn: NSButton!
     @IBAction func backup(_ sender: Any) {
         DispatchQueue.main.async {
@@ -210,9 +213,27 @@ class ViewController2: NSViewController {
         }
     }
     
-    
     @IBAction func fixPerm(_ sender: Any) {
         
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if(UserDefaults.standard.bool(forKey: "remountRootFS")) {
+            remountState.state = NSControl.StateValue.on
+        } else {
+            remountState.state = NSControl.StateValue.off
+        }
+    }
+    
+    @IBAction func changeState(_ sender: Any) {
+        if(UserDefaults.standard.bool(forKey: "remountRootFS")) {
+            UserDefaults.standard.setValue(false, forKey: "remountRootFS");
+            remountState.state = NSControl.StateValue.off
+        } else {
+            UserDefaults.standard.setValue(true, forKey: "remountRootFS");
+            remountState.state = NSControl.StateValue.on
+        }
     }
 }
 
@@ -240,6 +261,7 @@ class FixViewController: NSViewController {
     
     @IBAction func cancelFix(_ sender: Any) {
         self.view.window?.windowController?.close()
+        self.dismiss(self)
     }
     
     var action = "fix";
@@ -268,10 +290,12 @@ class FixViewController: NSViewController {
                     }
                 }
             } else {
+                self.dismiss(self)
                 remountRootFS(password: password);
             }
         } else {
             self.view.window?.shakeWindow()
+            self.dismiss(self)
         }
     }
     

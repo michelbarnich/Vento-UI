@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -188,7 +188,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="458" height="152"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ae4-eP-4If">
+                                    <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ae4-eP-4If">
                                         <rect key="frame" x="-2" y="78" width="462" height="20"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="restoring original Icons..." id="jIx-sy-xNk">
@@ -263,16 +263,20 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="changeState:" target="CQF-Pr-Tse" id="1CH-yJ-bCR"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="backupbttn" destination="381-qB-8N1" id="L2j-Zw-cbg"/>
+                        <outlet property="remountState" destination="dPK-7m-f3B" id="HWk-wC-DXJ"/>
                     </connections>
                 </viewController>
                 <customObject id="GWK-f9-Ji7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1044.5"/>
+            <point key="canvasLocation" x="228" y="1016"/>
         </scene>
         <!--FixViewController-->
         <scene sceneID="UQQ-fw-3YR">
@@ -340,7 +344,7 @@ Gw
                                 <rect key="frame" x="0.0" y="0.0" width="458" height="152"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yxI-Ml-GHn">
+                                    <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yxI-Ml-GHn">
                                         <rect key="frame" x="-2" y="66" width="462" height="20"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Applying Fix..." id="10e-jz-gZe">
@@ -363,7 +367,7 @@ Gw
                 </viewController>
                 <customObject id="fDe-2o-rP1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1735"/>
+            <point key="canvasLocation" x="75" y="1800"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="u5i-3D-zfR">
@@ -386,7 +390,7 @@ Gw
                 </windowController>
                 <customObject id="Jv8-P4-Tuu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1378"/>
+            <point key="canvasLocation" x="18" y="1436"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="kvS-Vp-cjm">
@@ -414,7 +418,7 @@ Gw
                                 <rect key="frame" x="116" y="556" width="346" height="330"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" id="lhh-2c-udJ">
-                                    <font key="font" metaFont="controlContent"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                     <string key="title">"Vento" and "Vento CLI" are Softwares, created by Michel Barnich, to change the Icons of Apps installed on your Mac. Michel Barnich is not responsible for any damage that might be caused by using "Vento" and/or "Vento CLI"! Use both tools at your own risk! You are not allowed to share "Vento", "Vento CLI" or Vento's App Icon without permission!
 
 Credits:
@@ -459,7 +463,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Vento" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="ViewController" customModule="Vento" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="299"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -476,7 +480,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                                 </connections>
                             </button>
                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SyZ-VQ-guh">
-                                <rect key="frame" x="437" y="16" width="25" height="25"/>
+                                <rect key="frame" x="437.5" y="16" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7Yv-xa-gSO">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -527,7 +531,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                                         <rect key="frame" x="232" y="136" width="16" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </progressIndicator>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4bl-K8-kTe">
+                                    <button wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4bl-K8-kTe">
                                         <rect key="frame" x="131" y="122" width="219" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="bevel" title="Close" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DXr-la-xN8">
@@ -538,7 +542,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                                             <action selector="closeButton:" target="XfG-lQ-9wD" id="ft2-BE-WUJ"/>
                                         </connections>
                                     </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vzk-Hq-DE7">
+                                    <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vzk-Hq-DE7">
                                         <rect key="frame" x="7" y="160" width="466" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="T3u-y0-fuu">
@@ -561,7 +565,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                         <outlet property="spinWheel" destination="iRm-SJ-zuJ" id="cpB-gx-K40"/>
                         <outlet property="statusLabel" destination="vzk-Hq-DE7" id="6T6-rk-Id0"/>
                         <segue destination="FvI-gc-Ty8" kind="show" id="BJC-jt-LbN"/>
-                        <segue destination="6GD-Ib-tFh" kind="modal" identifier="remount" id="UGn-tP-eoj"/>
+                        <segue destination="6GD-Ib-tFh" kind="modal" identifier="remount" id="WgO-OE-ZCS"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -570,10 +574,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UGn-tP-eoj"/>
+        <segue reference="WgO-OE-ZCS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Image" width="256" height="256"/>
-        <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSActionTemplate" width="17" height="15"/>
     </resources>
 </document>
