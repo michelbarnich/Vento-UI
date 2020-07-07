@@ -119,18 +119,15 @@ class ViewController: NSViewController {
     }
     
     func showFixViewForRemount() {
-        print("TEST")
-        if(UserDefaults.standard.bool(forKey: "remountRootFS")) {
-            print("test")
-                self.performSegue(withIdentifier: "remount", sender: self)
-            //only continue after FixViewController
-            
-        }
     }
 
 
     @IBAction func choseTheme(_ sender: Any) {
-        showFixViewForRemount()
+        
+        if(UserDefaults.standard.bool(forKey: "remountRootFS")) {
+            self.performSegue(withIdentifier: "remount", sender: self)
+        }
+        
         let dialog = NSOpenPanel();
          
          dialog.title                   = "Choose a theme";
