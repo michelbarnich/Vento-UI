@@ -111,6 +111,10 @@ class ViewController: NSViewController {
         }
     }
     
+    @IBAction func listView(_ sender: Any) {
+        
+    }
+    
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if(segue.identifier == "remount") {
             let viewController = segue.destinationController as! FixViewController
