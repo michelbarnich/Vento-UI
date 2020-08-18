@@ -347,6 +347,42 @@ class restoreDefaults: NSViewController {
     }
 }
 
+class singleAppThemer: NSViewController {
+    
+    @IBOutlet weak var container: NSView!
+    @IBOutlet weak var appContainer: NSView!
+    
+    func fillContainerView(containerView: NSView) {
+        let installedAppsArray = getInstalledAppsInfoArray();
+        
+        //trashy implementation of icon slideshow
+        let defaultIcon = "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/GenericApplicationIcon.icns"
+        for i in 0 ... (installedAppsArray.count - 1) {
+
+            var imageNameForView:String = Bundle(path: installedAppsArray[i][1])?.infoDictionary?["CFBundleIconFile"] as? String ?? defaultIcon
+            
+            if !imageNameForView.hasSuffix(".icns") {
+                imageNameForView += ".icns"
+            }
+            
+            var imageForView = NSImage(contentsOf: URL(fileURLWithPath: installedAppsArray[i][1] + "/Contents/resources/" + imageNameForView))
+            
+            if(imageNameForView == defaultIcon) {
+                imageForView = NSImage(contentsOf: URL(fileURLWithPath: defaultIcon))
+            }
+                
+            
+            
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fillContainerView(containerView: container);
+    }
+    
+}
+
 extension NSWindow {
 
     func shakeWindow(){
