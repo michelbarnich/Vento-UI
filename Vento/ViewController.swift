@@ -371,7 +371,30 @@ class singleAppThemer: NSViewController {
                 imageForView = NSImage(contentsOf: URL(fileURLWithPath: defaultIcon))
             }
                 
+            let newAppContainerView = NSView(frame: CGRect(x: 0, y: (83 * i), width: 232, height: 83));
+            container.addSubview(newAppContainerView);
+            container.frame.size.height += 83;
             
+            let newImageView = NSImageView(frame: CGRect(x: 26, y: 27, width: 48, height: 48));
+            newImageView.image = imageForView;
+            newAppContainerView.addSubview(newImageView);
+            
+            let newLabel = NSTextField(frame: CGRect(x: 0, y: 9, width: 178, height: 26));
+            newLabel.isEditable = false;
+            newLabel.isBezeled = false;
+            newLabel.drawsBackground = false;
+            newLabel.isSelectable = false;
+            newLabel.stringValue = Bundle(path: installedAppsArray[i][1])?.infoDictionary?["CFBundleName"] as? String ?? "-";
+            newLabel.maximumNumberOfLines = 2;
+            newLabel.alignment = .center;
+            newLabel.lineBreakMode = .byCharWrapping
+            newLabel.font = NSFont.systemFont(ofSize: 13);
+            newLabel.sizeToFit();
+            newAppContainerView.addSubview(newLabel);
+            
+            let newSeparator = NSBox(frame: CGRect(x: 0, y: 0, width: 232, height: 5));
+            newSeparator.boxType = .separator
+            newAppContainerView.addSubview(newSeparator);
             
         }
     }

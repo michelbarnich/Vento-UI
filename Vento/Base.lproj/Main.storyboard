@@ -294,34 +294,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="232" height="83"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <customView ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RBW-Id-0At">
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RBW-Id-0At">
                                                     <rect key="frame" x="0.0" y="0.0" width="232" height="83"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <subviews>
-                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JRE-ZC-mbp">
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JRE-ZC-mbp">
                                                             <rect key="frame" x="13" y="27" width="48" height="48"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Image" id="q0b-s4-C0T"/>
                                                         </imageView>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obs-cp-WbR">
-                                                            <rect key="frame" x="17" y="9" width="40" height="16"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="36" id="gA4-gt-e2a"/>
-                                                                <constraint firstAttribute="height" constant="16" id="hJs-VT-nSl"/>
-                                                            </constraints>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Vento" id="eCG-MR-RPL">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obs-cp-WbR">
+                                                            <rect key="frame" x="-3" y="9" width="237" height="16"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" title="Vento" id="eCG-MR-RPL">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Otn-ey-3MO">
-                                                            <rect key="frame" x="89" y="10" width="137" height="32"/>
+                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Otn-ey-3MO">
+                                                            <rect key="frame" x="89" y="20" width="137" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <buttonCell key="cell" type="push" title="restore Default" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PXN-V3-8Xi">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
                                                         </button>
-                                                        <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ssp-sP-8h7">
-                                                            <rect key="frame" x="89" y="38" width="137" height="32"/>
+                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ssp-sP-8h7">
+                                                            <rect key="frame" x="89" y="48" width="137" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <buttonCell key="cell" type="push" title="choose Icon" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="h7s-2H-9JQ">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                 <font key="font" metaFont="system"/>
@@ -332,20 +333,6 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         </box>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="obs-cp-WbR" secondAttribute="bottom" constant="9" id="1Rs-dq-nZ5"/>
-                                                        <constraint firstItem="Otn-ey-3MO" firstAttribute="top" secondItem="Ssp-sP-8h7" secondAttribute="bottom" constant="8" id="6yR-Zh-Ncb"/>
-                                                        <constraint firstItem="JRE-ZC-mbp" firstAttribute="top" secondItem="RBW-Id-0At" secondAttribute="top" constant="8" id="8Sj-jn-6tZ"/>
-                                                        <constraint firstItem="JRE-ZC-mbp" firstAttribute="centerX" secondItem="obs-cp-WbR" secondAttribute="centerX" id="DB3-QN-hjN"/>
-                                                        <constraint firstItem="Ssp-sP-8h7" firstAttribute="top" secondItem="RBW-Id-0At" secondAttribute="top" constant="18" id="LoX-PL-wCk"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Otn-ey-3MO" secondAttribute="bottom" constant="17" id="SCz-f0-XFA"/>
-                                                        <constraint firstItem="Otn-ey-3MO" firstAttribute="leading" secondItem="obs-cp-WbR" secondAttribute="trailing" constant="28" id="aJm-uQ-VE3"/>
-                                                        <constraint firstItem="Ssp-sP-8h7" firstAttribute="leading" secondItem="Otn-ey-3MO" secondAttribute="leading" id="cQc-Zk-02u"/>
-                                                        <constraint firstItem="obs-cp-WbR" firstAttribute="top" secondItem="JRE-ZC-mbp" secondAttribute="bottom" constant="2" id="kp7-Aw-IQX"/>
-                                                        <constraint firstItem="Ssp-sP-8h7" firstAttribute="trailing" secondItem="Otn-ey-3MO" secondAttribute="trailing" id="lar-K5-z2k"/>
-                                                        <constraint firstItem="Ssp-sP-8h7" firstAttribute="leading" secondItem="JRE-ZC-mbp" secondAttribute="trailing" constant="22" id="m3h-tA-HKP"/>
-                                                        <constraint firstItem="JRE-ZC-mbp" firstAttribute="leading" secondItem="RBW-Id-0At" secondAttribute="leading" constant="26" id="qY8-d3-9Aj"/>
-                                                    </constraints>
                                                 </customView>
                                             </subviews>
                                         </view>
