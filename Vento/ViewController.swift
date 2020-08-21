@@ -350,10 +350,9 @@ class restoreDefaults: NSViewController {
 class singleAppThemer: NSViewController {
     
     @IBOutlet weak var container: NSView!
-    @IBOutlet weak var appContainer: NSView!
+    let installedAppsArray = getInstalledAppsInfoArray().sorted(by: {$1[0] < $0[0] });
     
     func fillContainerView(containerView: NSView) {
-        let installedAppsArray = getInstalledAppsInfoArray();
         
         //trashy implementation of icon slideshow
         let defaultIcon = "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/GenericApplicationIcon.icns"
@@ -396,6 +395,36 @@ class singleAppThemer: NSViewController {
             newSeparator.boxType = .separator
             newAppContainerView.addSubview(newSeparator);
             
+            let chooseIconButton = NSButton(frame: CGRect(x: 89, y: 48, width: 137, height: 32));
+            chooseIconButton.bezelStyle = .rounded;
+            chooseIconButton.title = "choose Icon";
+            chooseIconButton.target = self;
+            chooseIconButton.tag = i ;
+            chooseIconButton.action = #selector(installThemeForSingleApp(_:));
+            newAppContainerView.addSubview(chooseIconButton);
+            
+        }
+    }
+    
+    @objc func installThemeForSingleApp(_ sender: NSButton) {
+        if(UserDefaults.standard.bool(forKey: "remountRootFS")) {
+            self.performSegue(withIdentifier: "remount", sender: self)
+        }
+        
+        let dialog = NSOpenPanel();
+         
+         dialog.title                   = "Choose a theme";
+         dialog.showsResizeIndicator    = false;
+         dialog.showsHiddenFiles        = false;
+         dialog.canChooseDirectories    = true;
+         dialog.canCreateDirectories    = false;
+         dialog.allowsMultipleSelection = false;
+         dialog.allowedFileTypes        = ["png"];
+
+        if (dialog.runModal() == NSApplication.ModalResponse.OK) {
+            let result = dialog.url // Pathname of the file
+            NSWorkspace.shared.setIcon(NSImage(byReferencing: result!), forFile: installedAppsArray[sender.tag][1], options: NSWorkspace.IconCreationOptions(rawValue: 0));
+        
         }
     }
     
