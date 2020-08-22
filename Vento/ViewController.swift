@@ -419,7 +419,7 @@ class singleAppThemer: NSViewController {
          dialog.canChooseDirectories    = true;
          dialog.canCreateDirectories    = false;
          dialog.allowsMultipleSelection = false;
-         dialog.allowedFileTypes        = ["png"];
+         dialog.allowedFileTypes        = ["png", "jpg", "icns"];
 
         if (dialog.runModal() == NSApplication.ModalResponse.OK) {
             let result = dialog.url // Pathname of the file
