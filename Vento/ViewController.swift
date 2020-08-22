@@ -403,7 +403,28 @@ class singleAppThemer: NSViewController {
             chooseIconButton.action = #selector(installThemeForSingleApp(_:));
             newAppContainerView.addSubview(chooseIconButton);
             
+            let resoreOriginalButton = NSButton(frame: CGRect(x: 89, y: 20, width: 137, height: 32));
+            resoreOriginalButton.bezelStyle = .rounded;
+            resoreOriginalButton.title = "restore Default";
+            resoreOriginalButton.target = self;
+            resoreOriginalButton.tag = i ;
+            resoreOriginalButton.action = #selector(removeThemeForApp(_:));
+            newAppContainerView.addSubview(resoreOriginalButton);
+            
         }
+    }
+    
+    @objc func removeThemeForApp(_ sender: NSButton) {
+        var iconName = getApplicationIconName(path: installedAppsArray[sender.tag][1])
+        if !iconName.hasSuffix(".icns") {
+            iconName += ".icns"
+        }
+        
+        print("[INFO:] restoring \(installedAppsArray[sender.tag][1])")
+  
+        NSWorkspace.shared.setIcon(NSImage(byReferencing: URL(fileURLWithPath: installedAppsArray[sender.tag][1] + "/Contents/Resources/\(iconName)")), forFile: installedAppsArray[sender.tag][1], options: NSWorkspace.IconCreationOptions(rawValue: 0))
+        
+        print(URL(fileURLWithPath: installedAppsArray[sender.tag][1] + "/Contents/Resources/\(iconName)"));
     }
     
     @objc func installThemeForSingleApp(_ sender: NSButton) {
